@@ -1,0 +1,1221 @@
+[INFO] Creating output directory: /usr/local/storage2/parity_test/out/logs
+[INFO] [mapping2] [2020/05/26-14:42:39] Starting mapping2. Logs written to -> /usr/local/storage2/parity_test/out/logs/mapping2.out.log / /usr/local/storage2/parity_test/out/logs/mapping2.err.log
+[INFO] [HISAT2] [2020/05/26-12:42:41] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_01_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_01.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    421 (0.42%) aligned 0 times
+    78462 (78.46%) aligned exactly 1 time
+    21117 (21.12%) aligned >1 times
+99.58% overall alignment rate
+gzip: /home/data/samples//small.sample_01_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-12:43:33] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_01.sam -> /home/data/out//HISAT/dta/small.sample_01.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_01.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_01.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_01.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-12:43:34] Finished processing /home/data/out//HISAT/dta/small.sample_01
+
+[INFO] [STAR] [2020/05/26-12:43:34] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_01_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_01 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 12:43:34 ..... started STAR run
+May 26 12:43:34 ..... loading genome
+May 26 12:43:52 ..... started 1st pass mapping
+May 26 12:43:55 ..... finished 1st pass mapping
+May 26 12:43:55 ..... inserting junctions into the genome indices
+May 26 12:45:02 ..... started mapping
+May 26 12:45:05 ..... finished mapping
+May 26 12:45:05 ..... finished successfully
+[INFO] [STAR] [2020/05/26-12:45:06] sorting, indexing, and optimization ...
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+[INFO] [STAR] [2020/05/26-12:45:06] Finished processing /home/data/out//STAR/quant/small.sample_01
+
+[INFO] [KALLISTO] [2020/05/26-12:45:06] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_01 --bias -b 100 /home/data/samples//small.sample_01_1.fastq.gz /home/data/samples//small.sample_01_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_01_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:45:06] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_01 --bias -b 100 /home/data/samples//small.sample_01_1.fastq.gz /home/data/samples//small.sample_01_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:45:06] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_01 /home/data/samples//small.sample_01_1.fastq.gz /home/data/samples//small.sample_01_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_01_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:45:06] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_01 --single /home/data/samples//small.sample_01_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:45:06] Finished processing /home/data/out//KALLISTO/alignment/small.sample_01 and /home/data/out//KALLISTO/pseudo/small.sample_01
+
+[INFO] [HISAT2] [2020/05/26-12:45:06] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_02_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_02.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    456 (0.46%) aligned 0 times
+    78261 (78.26%) aligned exactly 1 time
+    21283 (21.28%) aligned >1 times
+99.54% overall alignment rate
+gzip: /home/data/samples//small.sample_02_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-12:45:57] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_02.sam -> /home/data/out//HISAT/dta/small.sample_02.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_02.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_02.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_02.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-12:45:57] Finished processing /home/data/out//HISAT/dta/small.sample_02
+
+[INFO] [STAR] [2020/05/26-12:45:57] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_02_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_02 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 12:45:57 ..... started STAR run
+May 26 12:45:57 ..... loading genome
+May 26 12:46:41 ..... started 1st pass mapping
+May 26 12:46:43 ..... finished 1st pass mapping
+May 26 12:46:43 ..... inserting junctions into the genome indices
+May 26 12:47:50 ..... started mapping
+May 26 12:47:54 ..... finished mapping
+May 26 12:47:54 ..... finished successfully
+[INFO] [STAR] [2020/05/26-12:47:54] sorting, indexing, and optimization ...
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+[INFO] [STAR] [2020/05/26-12:47:54] Finished processing /home/data/out//STAR/quant/small.sample_02
+
+[INFO] [KALLISTO] [2020/05/26-12:47:54] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_02 --bias -b 100 /home/data/samples//small.sample_02_1.fastq.gz /home/data/samples//small.sample_02_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_02_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:47:54] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_02 --bias -b 100 /home/data/samples//small.sample_02_1.fastq.gz /home/data/samples//small.sample_02_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:47:54] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_02 /home/data/samples//small.sample_02_1.fastq.gz /home/data/samples//small.sample_02_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_02_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:47:54] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_02 --single /home/data/samples//small.sample_02_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:47:54] Finished processing /home/data/out//KALLISTO/alignment/small.sample_02 and /home/data/out//KALLISTO/pseudo/small.sample_02
+
+[INFO] [HISAT2] [2020/05/26-12:47:54] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_03_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_03.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    465 (0.47%) aligned 0 times
+    89602 (89.60%) aligned exactly 1 time
+    9933 (9.93%) aligned >1 times
+99.53% overall alignment rate
+gzip: /home/data/samples//small.sample_03_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-12:47:58] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_03.sam -> /home/data/out//HISAT/dta/small.sample_03.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_03.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_03.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_03.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-12:47:58] Finished processing /home/data/out//HISAT/dta/small.sample_03
+
+[INFO] [STAR] [2020/05/26-12:47:58] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_03_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_03 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 12:47:58 ..... started STAR run
+May 26 12:47:58 ..... loading genome
+May 26 12:49:33 ..... started 1st pass mapping
+May 26 12:49:35 ..... finished 1st pass mapping
+May 26 12:49:35 ..... inserting junctions into the genome indices
+May 26 12:50:42 ..... started mapping
+May 26 12:50:45 ..... finished mapping
+May 26 12:50:45 ..... finished successfully
+[INFO] [STAR] [2020/05/26-12:50:45] sorting, indexing, and optimization ...
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+[INFO] [STAR] [2020/05/26-12:50:46] Finished processing /home/data/out//STAR/quant/small.sample_03
+
+[INFO] [KALLISTO] [2020/05/26-12:50:46] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_03 --bias -b 100 /home/data/samples//small.sample_03_1.fastq.gz /home/data/samples//small.sample_03_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_03_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:50:46] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_03 --bias -b 100 /home/data/samples//small.sample_03_1.fastq.gz /home/data/samples//small.sample_03_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:50:46] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_03 /home/data/samples//small.sample_03_1.fastq.gz /home/data/samples//small.sample_03_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_03_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:50:46] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_03 --single /home/data/samples//small.sample_03_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:50:46] Finished processing /home/data/out//KALLISTO/alignment/small.sample_03 and /home/data/out//KALLISTO/pseudo/small.sample_03
+
+[INFO] [HISAT2] [2020/05/26-12:50:46] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_04_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_04.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    456 (0.46%) aligned 0 times
+    88030 (88.03%) aligned exactly 1 time
+    11514 (11.51%) aligned >1 times
+99.54% overall alignment rate
+gzip: /home/data/samples//small.sample_04_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-12:50:50] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_04.sam -> /home/data/out//HISAT/dta/small.sample_04.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_04.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_04.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_04.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-12:50:50] Finished processing /home/data/out//HISAT/dta/small.sample_04
+
+[INFO] [STAR] [2020/05/26-12:50:50] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_04_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_04 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 12:50:50 ..... started STAR run
+May 26 12:50:50 ..... loading genome
+May 26 12:53:41 ..... started 1st pass mapping
+May 26 12:53:43 ..... finished 1st pass mapping
+May 26 12:53:44 ..... inserting junctions into the genome indices
+/home/scripts/star_call.sh: line 25:   429 Killed                  $STAR --genomeDir $STARIndex --readFilesIn $fw --runThreadN $nthreads --outFileNamePrefix $out --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+[INFO] [STAR] [2020/05/26-12:53:45] sorting, indexing, and optimization ...
+samtools sort: failed to read header from "/home/data/out//STAR/quant/small.sample_04Aligned.out.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//STAR/quant/small.sample_04.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//STAR/quant/small.sample_04.bam": No such file or directory
+[INFO] [STAR] [2020/05/26-12:53:46] Finished processing /home/data/out//STAR/quant/small.sample_04
+
+[INFO] [KALLISTO] [2020/05/26-12:53:46] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_04 --bias -b 100 /home/data/samples//small.sample_04_1.fastq.gz /home/data/samples//small.sample_04_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_04_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:53:46] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_04 --bias -b 100 /home/data/samples//small.sample_04_1.fastq.gz /home/data/samples//small.sample_04_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-12:53:46] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_04 /home/data/samples//small.sample_04_1.fastq.gz /home/data/samples//small.sample_04_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_04_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:53:46] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_04 --single /home/data/samples//small.sample_04_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-12:53:46] Finished processing /home/data/out//KALLISTO/alignment/small.sample_04 and /home/data/out//KALLISTO/pseudo/small.sample_04
+
+[INFO] [HISAT2] [2020/05/26-12:53:46] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_05_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_05.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    421 (0.42%) aligned 0 times
+    89677 (89.68%) aligned exactly 1 time
+    9902 (9.90%) aligned >1 times
+99.58% overall alignment rate
+gzip: /home/data/samples//small.sample_05_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-12:54:37] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_05.sam -> /home/data/out//HISAT/dta/small.sample_05.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_05.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_05.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_05.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-12:54:37] Finished processing /home/data/out//HISAT/dta/small.sample_05
+
+[INFO] [STAR] [2020/05/26-12:54:37] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_05_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_05 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 12:54:37 ..... started STAR run
+May 26 12:54:37 ..... loading genome
+May 26 12:58:56 ..... started 1st pass mapping
+May 26 12:58:59 ..... finished 1st pass mapping
+May 26 12:58:59 ..... inserting junctions into the genome indices
+May 26 13:00:06 ..... started mapping
+May 26 13:00:09 ..... finished mapping
+May 26 13:00:09 ..... finished successfully
+[INFO] [STAR] [2020/05/26-13:00:10] sorting, indexing, and optimization ...
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+[INFO] [STAR] [2020/05/26-13:00:10] Finished processing /home/data/out//STAR/quant/small.sample_05
+
+[INFO] [KALLISTO] [2020/05/26-13:00:10] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_05 --bias -b 100 /home/data/samples//small.sample_05_1.fastq.gz /home/data/samples//small.sample_05_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_05_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-13:00:10] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_05 --bias -b 100 /home/data/samples//small.sample_05_1.fastq.gz /home/data/samples//small.sample_05_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-13:00:10] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_05 /home/data/samples//small.sample_05_1.fastq.gz /home/data/samples//small.sample_05_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_05_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-13:00:10] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_05 --single /home/data/samples//small.sample_05_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-13:00:10] Finished processing /home/data/out//KALLISTO/alignment/small.sample_05 and /home/data/out//KALLISTO/pseudo/small.sample_05
+
+[INFO] [HISAT2] [2020/05/26-13:00:10] /home/software/hisat2-2.1.0/hisat2 -q --dta -p 8 -x /home/data/indices/hisat2/9606/standardchr/INDEX -U /home/data/samples//small.sample_06_1.fastq.gz -S /home/data/out//HISAT/dta/small.sample_06.sam
+100000 reads; of these:
+  100000 (100.00%) were unpaired; of these:
+    437 (0.44%) aligned 0 times
+    78192 (78.19%) aligned exactly 1 time
+    21371 (21.37%) aligned >1 times
+99.56% overall alignment rate
+gzip: /home/data/samples//small.sample_06_2.fastq.gz: No such file or directory
+Error, fewer reads in file specified with -2 than in file specified with -1
+terminate called after throwing an instance of 'int'
+Aborted
+(ERR): hisat2-align exited with value 134
+[INFO] [HISAT2] [2020/05/26-13:00:14] sorting, indexing, and optimization ... /home/data/out//HISAT/dta/small.sample_06.sam -> /home/data/out//HISAT/dta/small.sample_06.bam
+samtools sort: failed to read header from "/home/data/out//HISAT/dta/small.sample_06.sam"
+[E::hts_open_format] Failed to open file "/home/data/out//HISAT/dta/small.sample_06.bam" : No such file or directory
+samtools index: failed to open "/home/data/out//HISAT/dta/small.sample_06.bam": No such file or directory
+[INFO] [HISAT] [2020/05/26-13:00:14] Finished processing /home/data/out//HISAT/dta/small.sample_06
+
+[INFO] [STAR] [2020/05/26-13:00:14] /home/software/STAR/bin/Linux_x86_64_static/STAR --genomeDir /home/data/indices/STAR/9606/standardchr/INDEX --readFilesIn /home/data/samples//small.sample_06_1.fastq.gz --runThreadN 8 --outFileNamePrefix /home/data/out//STAR/quant/small.sample_06 --readFilesCommand zcat --outFilterMismatchNmax 20 --outSAMstrandField intronMotif --quantMode TranscriptomeSAM --twopassMode Basic
+May 26 13:00:14 ..... started STAR run
+May 26 13:00:14 ..... loading genome
+May 26 13:01:46 ..... started 1st pass mapping
+May 26 13:01:48 ..... finished 1st pass mapping
+May 26 13:01:50 ..... inserting junctions into the genome indices
+May 26 13:02:56 ..... started mapping
+May 26 13:03:00 ..... finished mapping
+May 26 13:03:00 ..... finished successfully
+[INFO] [STAR] [2020/05/26-13:03:00] sorting, indexing, and optimization ...
+[bam_sort_core] merging from 0 files and 8 in-memory blocks...
+[INFO] [STAR] [2020/05/26-13:03:00] Finished processing /home/data/out//STAR/quant/small.sample_06
+
+[INFO] [KALLISTO] [2020/05/26-13:03:00] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_06 --bias -b 100 /home/data/samples//small.sample_06_1.fastq.gz /home/data/samples//small.sample_06_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_06_2.fastq.gz
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-13:03:00] /home/software/kallisto_linux-v0.45.0/kallisto quant -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/alignment/small.sample_06 --bias -b 100 /home/data/samples//small.sample_06_1.fastq.gz /home/data/samples//small.sample_06_2.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto quant [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              quantification
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+    --bias                    Perform sequence based bias correction
+-b, --bootstrap-samples=INT   Number of bootstrap samples (default: 0)
+    --seed=INT                Seed for the bootstrap sampling (default: 42)
+    --plaintext               Output plaintext instead of HDF5
+    --fusion                  Search for fusions for Pizzly
+    --single                  Quantify single-end reads
+    --single-overhang         Include reads where unobserved rest of fragment is
+                              predicted to lie outside a transcript
+    --fr-stranded             Strand specific reads, first read forward
+    --rf-stranded             Strand specific reads, first read reverse
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+    --pseudobam               Save pseudoalignments to transcriptome to BAM file
+    --genomebam               Project pseudoalignments to genome sorted BAM file
+-g, --gtf                     GTF file for transcriptome information
+                              (required for --genomebam)
+-c, --chromosomes             Tab separated file with chromosome names and lengths
+                              (optional for --genomebam, but recommended)
+[INFO] [KALLISTO] [2020/05/26-13:03:00] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_06 /home/data/samples//small.sample_06_1.fastq.gz /home/data/samples//small.sample_06_2.fastq.gz
+
+Error: file not found /home/data/samples//small.sample_06_2.fastq.gz
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-13:03:00] /home/software/kallisto_linux-v0.45.0/kallisto pseudo -t 8 --index /home/data/indices/kallisto/9606/standardchr/INDEX --output-dir /home/data/out//KALLISTO/pseudo/small.sample_06 --single /home/data/samples//small.sample_06_1.fastq.gz
+
+Error: fragment length mean and sd must be supplied for single-end reads using -l and -s
+
+Usage: kallisto pseudo [arguments] FASTQ-files
+
+Required arguments:
+-i, --index=STRING            Filename for the kallisto index to be used for
+                              pseudoalignment
+-o, --output-dir=STRING       Directory to write output to
+
+Optional arguments:
+-u  --umi                     First file in pair is a UMI file
+-b  --batch=FILE              Process files listed in FILE
+    --quant                   Quantify using EM algorithm (only in batch mode)
+    --single                  Quantify single-end reads
+-l, --fragment-length=DOUBLE  Estimated average fragment length
+-s, --sd=DOUBLE               Estimated standard deviation of fragment length
+                              (default: -l, -s values are estimated from paired
+                               end data, but are required when using --single)
+-t, --threads=INT             Number of threads to use (default: 1)
+[INFO] [KALLISTO] [2020/05/26-13:03:00] Finished processing /home/data/out//KALLISTO/alignment/small.sample_06 and /home/data/out//KALLISTO/pseudo/small.sample_06
+
+[INFO] [mapping2] [2020/05/26-15:03:04] Finished
+
+[INFO] Creating output directory: /usr/local/storage2/parity_test/out/logs
+[INFO] [counting] [2020/05/26-15:03:04] Starting counting. Logs written to -> /usr/local/storage2/parity_test/out/logs/counting.out.log / /usr/local/storage2/parity_test/out/logs/counting.err.log
+[INFO] [STRINGTIE] [2020/05/26-13:03:09] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_01/small.sample_01.gtf /home/data/out//HISAT/dta/small.sample_01.bam
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_01/small.sample_01
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_01 not empty; skipping..
+
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_02/small.sample_02.gtf /home/data/out//HISAT/dta/small.sample_02.bam
+Error: input file /home/data/out//HISAT/dta/small.sample_02.bam cannot be found!
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_02/small.sample_02
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_02 not empty; skipping..
+
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_03/small.sample_03.gtf /home/data/out//HISAT/dta/small.sample_03.bam
+Error: input file /home/data/out//HISAT/dta/small.sample_03.bam cannot be found!
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_03/small.sample_03
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_03 not empty; skipping..
+
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_04/small.sample_04.gtf /home/data/out//HISAT/dta/small.sample_04.bam
+Error: input file /home/data/out//HISAT/dta/small.sample_04.bam cannot be found!
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_04/small.sample_04
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_04 not empty; skipping..
+
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_05/small.sample_05.gtf /home/data/out//HISAT/dta/small.sample_05.bam
+Error: input file /home/data/out//HISAT/dta/small.sample_05.bam cannot be found!
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_05/small.sample_05
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_05 not empty; skipping..
+
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] /home/software/stringtie-1.3.5.Linux_x86_64/stringtie -e -B -p 8 -G /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf -o /home/data/out//STRINGTIE/small.sample_06/small.sample_06.gtf /home/data/out//HISAT/dta/small.sample_06.bam
+Error: input file /home/data/out//HISAT/dta/small.sample_06.bam cannot be found!
+[INFO] [STRINGTIE] [2020/05/26-13:03:22] Finished processing /home/data/out//STRINGTIE/small.sample_06/small.sample_06
+
+[INFO] [SALMON] /home/data/out//SALMON/small.sample_06 not empty; skipping..
+
+[INFO] [featureCounts] [2020/05/26-13:03:22] /home/software/subread/bin/featureCounts -T 8 -p -B -C -a /mnt/einstein/work/GENOMIC_DERIVED/PAN/homo_sapiens/standardchr/Homo_sapiens.GRCh37.75.gtf --primary -o /home/data/out//COUNTS/featureCounts /home/data/out//HISAT/dta/small.sample_01.bam /home/data/out//HISAT/dta/small.sample_02.bam /home/data/out//HISAT/dta/small.sample_03.bam /home/data/out//HISAT/dta/small.sample_04.bam /home/data/out//HISAT/dta/small.sample_05.bam /home/data/out//HISAT/dta/small.sample_06.bam
+
+ERROR: invalid parameter: '/home/data/out//HISAT/dta/small.sample_02.bam'
+
+[INFO] [featureCounts] [2020/05/26-13:03:23] /home/software/subread/bin/featureCounts -T 8 -p -B -C -O -f -t exonic_part -a /home/data/indices/DEXSeq/9606/standardchr/annot.noaggregate.gtf --primary -o /home/data/out//COUNTS/featureCounts.DEXSeq /home/data/out//HISAT/dta/small.sample_01.bam /home/data/out//HISAT/dta/small.sample_02.bam /home/data/out//HISAT/dta/small.sample_03.bam /home/data/out//HISAT/dta/small.sample_04.bam /home/data/out//HISAT/dta/small.sample_05.bam /home/data/out//HISAT/dta/small.sample_06.bam
+
+ERROR: invalid parameter: '/home/data/out//HISAT/dta/small.sample_02.bam'
+
+[INFO] [featureCounts] [2020/05/26-13:03:23] Finished processing /home/data/out//COUNTS/featureCounts
+
+[INFO] [DEXSeq] [2020/05/26-13:03:23] /home/scripts/modify_dexseq_featurecounts.py /home/data/out//COUNTS/featureCounts.DEXSeq
+Traceback (most recent call last):
+  File "/home/scripts/modify_dexseq_featurecounts.py", line 7, in <module>
+    with open(infile, "r") as incount, open(outfile, "w") as outcount:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/data/out//COUNTS/featureCounts.DEXSeq'
+[INFO] [DEXSeq] [2020/05/26-13:03:23] /home/scripts/fc_to_ht.py --fcfile /home/data/out//COUNTS/featureCounts.DEXSeq.filtered --htdir /home/data/out//COUNTS/DEXSeq_HTcounts --sampletable /usr/local/storage2/parity_test/3v3/samples.txt
+Traceback (most recent call last):
+  File "/home/scripts/fc_to_ht.py", line 54, in <module>
+    main(args)
+  File "/home/scripts/fc_to_ht.py", line 21, in main
+    counts = pd.read_csv(args.fcfile, sep="\t", comment="#", dtype={"Chr" : str})
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'/home/data/out//COUNTS/featureCounts.DEXSeq.filtered' does not exist: b'/home/data/out//COUNTS/featureCounts.DEXSeq.filtered'
+[INFO] [DEXSeq] [2020/05/26-13:03:24] Preprocessing finished
+
+[INFO] [Kallisto] [2020/05/26-13:03:24] /home/scripts/kallisto_to_split_tpm.R --counts /home/data/out//KALLISTO/alignment --pdata /usr/local/storage2/parity_test/3v3/p_data.txt --out /home/data/out//COUNTS/tpm.counts --cond1 0 --cond2 1 --tx2gene /home/data/indices/R/9606/standardchr/tx2gene.RData
+Error in tximport(files, type = "kallisto", txOut = T) : 
+  all(file.exists(files)) is not TRUE
+Calls: tximport -> stopifnot
+Execution halted
+[INFO] [Kallisto] [2020/05/26-13:03:26] Preprocessing finished
+
+[INFO] [featureCounts] [2020/05/26-13:03:26] /home/scripts/create_exprs_fdata.py small.sample_01 small.sample_02 small.sample_03 small.sample_04 small.sample_05 small.sample_06
+Traceback (most recent call last):
+  File "/home/scripts/create_exprs_fdata.py", line 19, in <module>
+    df = pd.read_csv(featureCounts, sep="\t", comment="#")
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/usr/local/lib/python3.5/dist-packages/pandas/io/parsers.py", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 689, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'/home/data/out/COUNTS/featureCounts' does not exist: b'/home/data/out/COUNTS/featureCounts'
+[INFO] [featureCounts] [2020/05/26-13:03:26] Preprocessing finished
+
+[INFO] [counting] [2020/05/26-15:03:30] Finished
+
+[INFO] [expression] [2020/05/26-15:03:30] podman run -it --rm -v /usr/local/storage2/parity_test/out:/home/data/out -v /mnt/raidproj/proj/projekte/sequencing/splicing_pipeline/indices:/home/indices/ -v /usr/local/storage2/parity_test/3v3/p_data.txt:/usr/local/storage2/parity_test/3v3/p_data.txt expression /home/scripts/expression_call.sh /home/data/out/ /usr/local/storage2/parity_test/3v3/p_data.txt 8 9606/standardchr
+[INFO] [DESeq] [2020/05/26-13:03:50] /home/scripts/de_rseq_new.R /home/data/out//COUNTS/exprs.txt /home/data/out//COUNTS/p_data.txt /home/data/out//COUNTS/f_data.txt DESeq /home/data/out//diff_exp_outs/DESeq.out
+Loading EnrichmentBrowser
+[1] "/usr/local/lib/R/site-library" "/usr/local/lib/R/library"     
+[1] "/home/data/out//diff_exp_outs/DESeq.out"
+[1] "/home/data/out//COUNTS/exprs.txt"
+Reading data ...
+Corresponding annotation package not found: /home/data/out//COUNTS/f_data.txt.db
+Make sure that you have it installed.
+Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.3 (2019-03-11)
+Loading required package: /home/data/out//COUNTS/f_data.txt.db
+Error in get(anno.pkg) : 
+  object '/home/data/out//COUNTS/f_data.txt.db' not found
+Calls: readSE -> .annoP2G -> get
+In addition: Warning messages:
+1: packages not installed (unknown repository) 
+2: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘/home/data/out//COUNTS/f_data.txt.db’
+Execution halted
+[INFO] [edgeR] [2020/05/26-13:03:56] /home/scripts/de_rseq_new.R /home/data/out//COUNTS/exprs.txt out/COUNTS/p_data.txt /home/data/out//COUNTS/f_data.txt edgeR /home/data/out//diff_exp_outs/edgeR.out
+Loading EnrichmentBrowser
+[1] "/usr/local/lib/R/site-library" "/usr/local/lib/R/library"     
+[1] "/home/data/out//diff_exp_outs/edgeR.out"
+[1] "/home/data/out//COUNTS/exprs.txt"
+Reading data ...
+Corresponding annotation package not found: /home/data/out//COUNTS/f_data.txt.db
+Make sure that you have it installed.
+Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.3 (2019-03-11)
+Loading required package: /home/data/out//COUNTS/f_data.txt.db
+Error in get(anno.pkg) : 
+  object '/home/data/out//COUNTS/f_data.txt.db' not found
+Calls: readSE -> .annoP2G -> get
+In addition: Warning messages:
+1: packages not installed (unknown repository) 
+2: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘/home/data/out//COUNTS/f_data.txt.db’
+Execution halted
+[INFO] [edgeR] [2020/05/26-13:03:59] /home/scripts/de_rseq_new.R /home/data/out//COUNTS/exprs.txt /home/data/out//COUNTS/p_data.txt /home/data/out//COUNTS/f_data.txt limma /home/data/out//diff_exp_outs/limma.out
+Loading EnrichmentBrowser
+[1] "/usr/local/lib/R/site-library" "/usr/local/lib/R/library"     
+[1] "/home/data/out//diff_exp_outs/limma.out"
+[1] "/home/data/out//COUNTS/exprs.txt"
+Reading data ...
+Corresponding annotation package not found: /home/data/out//COUNTS/f_data.txt.db
+Make sure that you have it installed.
+Bioconductor version 3.8 (BiocManager 1.30.4), R 3.5.3 (2019-03-11)
+Loading required package: /home/data/out//COUNTS/f_data.txt.db
+Error in get(anno.pkg) : 
+  object '/home/data/out//COUNTS/f_data.txt.db' not found
+Calls: readSE -> .annoP2G -> get
+In addition: Warning messages:
+1: packages not installed (unknown repository) 
+2: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ‘/home/data/out//COUNTS/f_data.txt.db’
+Execution halted
+[INFO] [Sleuth] [2020/05/26-13:04:03] /home/scripts/run_sleuth.R --base.dir /home/data/out//KALLISTO/alignment --p.data /usr/local/storage2/parity_test/3v3/p_data.txt --condition.pairs /home/data/cond.pairs --out.dir /home/data/out//diff_exp_outs --num.cores 8 --tx2gene /home/indices/R/9606/standardchr/tx2gene.RData
+[1] "num.cores: 6"
+[1] "reading gene data..."
+'gene_mode' is TRUE. Sleuth will do counts aggregation at the gene level for downstream normalization, transformation, and modeling steps, as well as for plotting and results.
+reading in kallisto results
+dropping unused factor levels
+.Error in get_kallisto_path(path) : 
+  /home/data/out//KALLISTO/alignment/small.sample_01 exists, but does not contain kallisto output (abundance.h5)
+Calls: apply ... withCallingHandlers -> read_kallisto -> get_kallisto_path
+Execution halted
+[INFO] [Ballgown] [2020/05/26-13:04:05] /home/scripts/run_ballgown.R --base.dir /home/data/out//STRINGTIE --p.data /usr/local/storage2/parity_test/3v3/p_data.txt --condition.pairs /home/data/cond.pairs --out.dir /home/data/out//diff_exp_outs --tx2gene /home/indices/R/9606/standardchr/tx2gene.RData
+
+Attaching package: ‘ballgown’
+
+The following object is masked from ‘package:base’:
+
+    structure
+
+$base.dir
+[1] "/home/data/out//STRINGTIE"
+
+$condition.pairs
+[1] "/home/data/cond.pairs"
+
+$out.dir
+[1] "/home/data/out//diff_exp_outs"
+
+$p.data
+[1] "/usr/local/storage2/parity_test/3v3/p_data.txt"
+
+$tx2gene
+[1] "/home/indices/R/9606/standardchr/tx2gene.RData"
+
+  V1 V2
+1  0  1
+[1] "/home/data/out//STRINGTIE"
+[1] "^small.sample_01$|^small.sample_02$|^small.sample_03$|^small.sample_04$|^small.sample_05$|^small.sample_06$"
+           sample condition
+1 small.sample_01         0
+2 small.sample_02         0
+3 small.sample_03         0
+4 small.sample_04         1
+5 small.sample_05         1
+6 small.sample_06         1
+[1] 1
+[1] "small.sample_01"
+Tue May 26 13:04:13 2020
+Tue May 26 13:04:13 2020: Reading linking tables
+Tue May 26 13:04:14 2020: Reading intron data files
+Tue May 26 13:04:15 2020: Merging intron data
+Tue May 26 13:04:16 2020: Reading exon data files
+Tue May 26 13:04:18 2020: Merging exon data
+Tue May 26 13:04:19 2020: Reading transcript data files
+Tue May 26 13:04:20 2020: Merging transcript data
+Wrapping up the results
+Tue May 26 13:04:21 2020
+ballgown instance with 196339 transcripts and 1 samples
+Error in stattest(bg, feature = "transcript", covariate = "condition",  : 
+  There must be at least two replicates per group. Make sure covariate is categorical; if continuous, consider the timecourse option, or specify your own models with mod and mod0.
+Calls: apply -> FUN -> stattest
+Execution halted
+[INFO] [expression] [2020/05/26-15:04:30] Finished
+
+[INFO] [DEXSeq] [2020/05/26-13:04:37] /home/scripts/dexAna.R /usr/local/storage2/parity_test/3v3/p_data.txt /home/data/out//COUNTS/DEXSeq_HTcounts /home/data/cond.pairs /home/indices/DEXSeq/9606/standardchr/annot.noaggregate.gtf /home/data/out//diff_splicing_outs
+  V1 V2
+1  0  1
+                condition
+small.sample_01         0
+small.sample_02         0
+small.sample_03         0
+small.sample_04         1
+small.sample_05         1
+small.sample_06         1
+[1] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_01"
+[2] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_02"
+[3] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_03"
+[4] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_04"
+[5] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_05"
+[6] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_06"
+[1] "-----"
+[1] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_01"
+[2] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_02"
+[3] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_03"
+[4] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_04"
+[5] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_05"
+[6] "/home/data/out//COUNTS/DEXSeq_HTcounts/small.sample_06"
+                condition
+small.sample_01         0
+small.sample_02         0
+small.sample_03         0
+small.sample_04         1
+small.sample_05         1
+small.sample_06         1
+[1] "/home/indices/DEXSeq/9606/standardchr/annot.noaggregate.gtf"
+[1] "/home/data/out//diff_splicing_outs/DEXSeq.out"
+Error in read.table(x, header = FALSE, stringsAsFactors = FALSE) : 
+  no lines available in input
+Calls: apply ... DEXSeqDataSetFromHTSeq -> lapply -> lapply -> FUN -> read.table
+Execution halted
+[INFO] [rMATS] [2020/05/26-13:04:44] Creating b-files...
+[INFO] [rMATS] /home/data/out//diff_splicing_outs/rMATS/SE.MATS.JC.txt already exists, skipping..
+
+There are 57758 distinct gene ID in the gtf file
+There are 196339 distinct transcript ID in the gtf file
+There are 35575 one-transcript genes in the gtf file
+There are 1195393 exons in the gtf file
+There are 24835 one-exon transcripts in the gtf file
+There are 21864 one-transcript genes with only one exon in the transcript
+Average number of transcripts per gene is 3.399339
+Average number of exons per transcript is 6.088413
+Average number of exons per transcript excluding one-exon tx is 6.825252
+Average number of gene per geneGroup is 7.477784
+Fail to open /home/data/out/HISAT/dta/small.sample_05.bam
+Fail to open /home/data/out/HISAT/dta/small.sample_02.bam
+Fail to open /home/data/out/HISAT/dta/small.sample_03.bam
+Fail to open /home/data/out/HISAT/dta/small.sample_06.bam
+Fail to open /home/data/out/HISAT/dta/small.sample_04.bam
+
+==========
+Done processing each gene from dictionary to compile AS events
+Found 38105 exon skipping events
+Found 2359 exon MX events
+Found 12643 alt SS events
+There are 7725 alt 3 SS events and 4918 alt 5 SS events.
+Found 5551 RI events
+==========
+
+Running the statistical part.
+The statistical part is done.
+Done.
+[INFO] [rMATS] [2020/05/26-13:05:02] Splicing analysis finished
+
+[INFO] [DRIMSeq] [2020/05/26-13:05:02] /home/scripts/run_DRIMSeq.R --counts /home/data/out//KALLISTO/alignment --pdata /usr/local/storage2/parity_test/3v3/p_data.txt --outfile /home/data/out//diff_splicing_outs/DRIMSeq.out --tx2gene /home/indices/R/9606/standardchr/tx2gene.RData
+[1] "/home/data/out//KALLISTO/alignment/small.sample_01/abundance.h5"
+[2] "/home/data/out//KALLISTO/alignment/small.sample_02/abundance.h5"
+[3] "/home/data/out//KALLISTO/alignment/small.sample_03/abundance.h5"
+[4] "/home/data/out//KALLISTO/alignment/small.sample_04/abundance.h5"
+[5] "/home/data/out//KALLISTO/alignment/small.sample_05/abundance.h5"
+[6] "/home/data/out//KALLISTO/alignment/small.sample_06/abundance.h5"
+Error in tximport(files, type = "kallisto", txOut = TRUE) : 
+  all(file.exists(files)) is not TRUE
+Calls: tximport -> stopifnot
+Execution halted
+[INFO] [DRIMSeq] [2020/05/26-13:05:06] Splicing analysis finished
+
+[INFO] [bandits] [2020/05/26-15:05:08] Starting...
+$basedir
+[1] "/home/data/out/KALLISTO"
+
+$cdna
+NULL
+
+$gtf
+NULL
+
+$ncores
+[1] "8"
+
+$outfile
+[1] "/home/data/out/diff_splicing_outs/BANDITS.out"
+
+$pdata
+[1] "/usr/local/storage2/parity_test/3v3/p_data.txt"
+
+$seed
+[1] 1984
+
+$tool
+[1] "kallisto"
+
+$tx2gene
+[1] "/home/indices/R/9606/standardchr/tx2gene.RData"
+
+[1] "196339 transcripts mapped to 57758 genes"
+           sample condition
+1 small.sample_01         0
+2 small.sample_02         0
+3 small.sample_03         0
+4 small.sample_04         1
+5 small.sample_05         1
+6 small.sample_06         1
+reading kallisto input from /home/data/out/KALLISTO for:
+[1] small.sample_01 small.sample_02 small.sample_03 small.sample_04
+[5] small.sample_05 small.sample_06
+6 Levels: small.sample_01 small.sample_02 small.sample_03 ... small.sample_06
+not all kallisto ouput files exist!
+                                                 small.sample_01 
+"/home/data/out/KALLISTO/alignment/small.sample_01/abundance.h5" 
+                                                 small.sample_02 
+"/home/data/out/KALLISTO/alignment/small.sample_02/abundance.h5" 
+                                                 small.sample_03 
+"/home/data/out/KALLISTO/alignment/small.sample_03/abundance.h5" 
+                                                 small.sample_04 
+"/home/data/out/KALLISTO/alignment/small.sample_04/abundance.h5" 
+                                                 small.sample_05 
+"/home/data/out/KALLISTO/alignment/small.sample_05/abundance.h5" 
+                                                 small.sample_06 
+"/home/data/out/KALLISTO/alignment/small.sample_06/abundance.h5" 
+[1] FALSE FALSE FALSE FALSE FALSE FALSE
+[INFO] [bandits] [2020/05/26-15:05:25] Finished
+
+[INFO] [Eval: splicing] [2020/05/26-13:05:33] python3 /home/scripts/evaluate_diffsplic.py --indir /home/data/out/diff_splicing_outs/ --truegenes /mnt/input/own/simulations/splicing/EmpiResSimulations/SIMUL_STEM/diffsplic.trues > /home/data/out/diff_splicing_eval.txt
+Traceback (most recent call last):
+  File "/home/scripts/evaluate_diffsplic.py", line 279, in <module>
+    main(args)
+  File "/home/scripts/evaluate_diffsplic.py", line 246, in main
+    res = SummarizedResult(m, f)
+  File "/home/scripts/evaluate_diffsplic.py", line 125, in __init__
+    self.df[M2GENE[method]] =  self.df.index
+AttributeError: 'NoneType' object has no attribute 'index'
+[INFO] [Eval: splicing] [2020/05/26-13:05:58] Finished
+
+[INFO] [Eval: expression] [2020/05/26-13:05:58] python3 /home/scripts/evaluate_diffexp.py --indir /home/data/out/diff_exp_outs/ --truegenes /mnt/input/own/simulations/splicing/EmpiResSimulations/SIMUL_STEM/diffexp.trues > /home/data/out/diff_expression_eval.txt
+[INFO] [Eval: expression] [2020/05/26-13:05:59] Finished
+
